@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>The Restaurant</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"  href="styles.css">
+<script type="text/javascript" src="script.js"></script>
+<style>
+	body {margin:0 auto;
+	background-color:#efd6a8;	
+	max-width:1200 px;
+	}
+	p{text-indent:5%; 
+	font-family:system-ui;
+	line-height:1.5;
+	}
+	h2{text-indent:3%;
+		}
+</style>
+<!-- main -->
+<body>	
+<!-- Header with image -->
+		<div class="headerBlock" id="headerBlock">
+<!-- Links top -->	
+			<div class="headerMenu">
+				<a href="#headerBlock">Главная</a>
+				<a href="#aboutContainer">О нас</a>						
+				<a href="#menuContainer">Меню</a>
+				<a href="#reservationContainer">Обратная связь</a>
+			</div>
+			<div class="headerImg">		
+			</div>
+		<h1 class="h1Text" style="font-size:40px; color:white;">The Restaurant</h1>			
+		</div>	
+<!-- About Container -->	
+		<div class="container" id="aboutContainer">
+		<h2 class="h2Text"> О нас: </h2>
+		<p>Добро пожаловать в наш ресторан. В респектабельном изысканном интерьере Вас ждет большой выбор стейков и блюд европейской кухни из авторского меню,
+			а также идеально подобранная винная карта и великолепные авторские коктейли. Важным ингредиентом идеальной атмосферы является стабильно безупречный
+			уровень сервиса и гостеприимство нашей команды.</p>
+		<p>Находясь в самом центре столицы, наш ресторан взял на себя миссию удовлетворить требования даже самых взыскательных гурманов. Наша команда нашла 
+			идеальные рецепты приготовления блюд, мы изучили все нюансы вековых традиций подачи блюда, выбрали лучшие продукты и создавали нужную атмосферу — всё для того, 
+			чтобы наши гости могли по-настоящему наслаждаться гастрономической культурой и возвращались в этот мир уюта снова.</p>			
+		<p>Это место, где можно провести семейный ужин, душевно поговорить с друзьями, устроить бизнес-встречу, поработать в уютной обстановке с чашечкой кофе
+		или просто почитать книжку ранним воскресным утром.</p>	
+		<img src="img/coffeeshop.jpg" class="contentImg">
+		<p><strong>Часы работы:</strong> ежедневно с 9:00 до 23:00.</p>
+		<p><strong>Адрес:</strong> ул. Маросейка, 2/1с2, Москва, Россия.</p>		
+	</div>
+<!-- Menu Container -->
+	<div class="container"  id="menuContainer">
+		<h2 class="h2Text"> Меню: </h2>
+		<div class="menuButtons">
+			<input type="button" class="menuButton" id="eatButton" value="еда" onclick="setMenu(this)" style="border:3px solid black;">
+			<input type="button" class="menuButton" id="drinksButton" value="напитки" onclick="setMenu(this)">
+		</div>		
+		<div class="menuEat" id="eat">			
+			<h3>Бельгийские вафли</h3>
+				<p class="textMenu">Со вкусом ванили и солодовой мукой.</p>
+			<h3>Блинчики с черникой</h3>
+				<p class="textMenu">С сиропом, маслом и множеством ягод.</p>
+			<h3>Омлет</h3>
+				<p class="textMenu">Яичница с жареным красным перцем, чесноком и зеленым луком.</p>
+			<h3>Хлебная корзинка</h3>
+				<p class="textMenu">Ассорти свежей фруктовой выпечки и кексов.</p>
+		</div>
+		<div class="menuDrinks" id="drinks" style="">
+			<h3>Кофе</h3>
+				<p class="textMenu">Горячий кофе.</p>
+			<h3>Горячий шоколад</h3>
+				<p class="textMenu">Шоколадный эспрессо с молоком.</p>
+			<h3>Чай со льдом</h3>
+				<p class="textMenu">Фруктовый чай со льдом.</p>
+			<h3>Напитки</h3>
+				<p class="textMenu">Лимонад, квас, фруктовый мохито.</p>
+		</div>
+		<img src="img/kofe_cup.jpg" class="contentImg">
+	</div>
+<!-- Reservation Container -->
+	<div class="container" id="reservationContainer">
+		<p><strong>Забронируйте</strong> столик, спросите про актуальное предложение или просто отправьте нам сообщение:</p>
+		<form id="contactForm" action="" method="POST" onsubmit="handleForm(event)" >
+			<p><input class="inputPlace" id="reservationName" type="text" placeholder="Ваше имя" pattern="^[A-Za-zА-Яа-яЁё]+$" required ></p>
+			<p><input class="inputPlace" id="reservationNumber" type="number" placeholder="Количество гостей" min="1" max="12" required></p>
+			<p><input class="inputPlace" id="reservationTime" type="datetime-local" placeholder="Дата и время" required></p>
+			<p><input class="inputPlace" id="reservationPhone" type="tel" placeholder="Ваш телефон: 123-456-78" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}" required></p>
+			<p><input class="inputPlace" id="reservationMsg" type="text" placeholder="Сообщение \ Особые пожелания"></p>
+			<p><button class="submitButton" id="submitButton" type="submit"  onclick="getReservationInfo()">Отправить</button></p>			
+		</form>
+	</div>
+<!-- End page content -->
+<!-- Modal window -->
+	<div class="modalWindow" id="modalWindow" >
+		<div class="modalContent">
+			<span class="modalCloseElement" id="modalCloseElement" onclick="closeModalWIndow()"> &times;</span>
+			<p>Спасибо за обращение.</p>
+			<p id="reservationInfo"></p>
+		</div>
+	</div>
+<!-- Footer -->
+	<footer class="footer" id="footer">
+		<p> ©kras Dev 2022 «The Restaurant». Все права защищены.</p>		
+	</footer>
+</body>
+</html>
